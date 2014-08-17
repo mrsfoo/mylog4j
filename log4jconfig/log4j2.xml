@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+
+  <Console name="STDOUT" target="SYSTEM_OUT">
+      <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss,SSS} | %-45t | %-23c{1} | %-5p | %-75m | %-l%n"/>
+  </Console>
+  
+  <RollingFile name="RollingFile" fileName="../mylog4j/logs/geekLog.log" filePattern="logs/geekLog-%d{yyyy-MM-dd_HH.mm.ss,SSS}-%i.log">
+    <PatternLayout pattern="%d{yy-MM-dd HH:mm:ss,SSS} | %-45t | %-23c{1} | %-5p | %-75m | %-l%n"/>       <Policies>
+      <OnStartupTriggeringPolicy />
+    </Policies>
+  </RollingFile>
+
+  </Appenders>
+  <Loggers>
+    <Logger name="hello" level="info"/>
+    <Root level="trace">
+      <AppenderRef ref="STDOUT"/>
+      <AppenderRef ref="RollingFile"/>
+    </Root>
+  </Loggers>
+</Configuration>
